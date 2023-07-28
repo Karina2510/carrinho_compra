@@ -1,5 +1,7 @@
 --CRIAR TABELAS
 
+use carrinho_compra;
+
 CREATE TABLE CATEGORIA(
     id int auto_increment primary key,
     nome VARCHAR (100)

@@ -8,7 +8,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CriaCategoriaInputDTO implements Serializable {
+public class CategoriaInputDTO implements Serializable {
 
     @JsonProperty("id")
     private Integer id;

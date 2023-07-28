@@ -10,10 +10,10 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @Setter
 @Builder
-public class CriaCategoriaResponseDTO {
+public class CategoriaResponseDTO {
 
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
 
     @JsonProperty("nome")
     @NotEmpty(message = "Nome da categoria é obrigatório")

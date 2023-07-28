@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import projeto.carrinhoCompra.dto.CriaCategoriaInputDTO;
+import projeto.carrinhoCompra.dto.CategoriaInputDTO;
 import projeto.carrinhoCompra.service.CategoriaService;
 
 import javax.validation.Valid;
@@ -18,7 +18,7 @@ public class CategoriasController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public ResponseEntity criaCategoria(@RequestBody @Valid CriaCategoriaInputDTO categoria){
+    public ResponseEntity criaCategoria(@RequestBody @Valid CategoriaInputDTO categoria){
         return ResponseEntity.ok().body(service.criaCategoria(categoria));
     }
 }
