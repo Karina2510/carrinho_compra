@@ -21,4 +21,10 @@ public class CategoriasController {
     public ResponseEntity criaCategoria(@RequestBody @Valid CategoriaInputDTO categoria){
         return ResponseEntity.ok().body(service.criaCategoria(categoria));
     }
+
+    @GetMapping("{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public ResponseEntity retornaCategoriaPorId(@PathVariable Long id){
+        return ResponseEntity.ok().body(service.buscarCategoriaPorId(id));
+    }
 }

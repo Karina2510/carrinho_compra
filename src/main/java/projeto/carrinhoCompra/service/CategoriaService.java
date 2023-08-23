@@ -1,6 +1,5 @@
 package projeto.carrinhoCompra.service;
 
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +19,7 @@ public class CategoriaService {
     private CategoriaRepository categoriaRepository;
 
 
+
     public CategoriaResponseDTO criaCategoria(CategoriaInputDTO input){
         Categoria categoria =
                 Categoria.builder().nome(input.getNome()).build();
@@ -32,13 +32,15 @@ public class CategoriaService {
                 .build();
     }
 
-    public CategoriaResponseDTO buscarCategoriaPorId(Long id){
+
+    public CategoriaResponseDTO buscarCategoriaPorId(Long id) {
         Categoria categoria = categoriaRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Categoria " + id + " não encontrada"));
+                .orElseThrow(() -> new EntityNotFoundException("Categoria de id " + id + " não encontrada"));
 
-        CategoriaResponseDTO response = new CategoriaResponseDTO(categoria.getId(), categoria.getNome());
-
-        return response;
-
+        return CategoriaResponseDTO
+                .builder()
+                .id(categoria.getId())
+                .nome(categoria.getNome())
+                .build();
     }
 }
