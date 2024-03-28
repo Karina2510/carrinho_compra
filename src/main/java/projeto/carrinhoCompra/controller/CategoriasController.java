@@ -27,4 +27,5 @@ public class CategoriasController {
     public ResponseEntity retornaCategoriaPorId(@PathVariable Long id){
         return ResponseEntity.ok().body(service.buscarCategoriaPorId(id));
     }
+
 }

@@ -9,6 +9,7 @@ import projeto.carrinhoCompra.domain.entity.Categoria;
 import projeto.carrinhoCompra.domain.repository.CategoriaRepository;
 import projeto.carrinhoCompra.dto.CategoriaInputDTO;
 import projeto.carrinhoCompra.dto.CategoriaResponseDTO;
+import projeto.carrinhoCompra.dto.CategoriaUpdateDTO;
 
 @Service
 @AllArgsConstructor
@@ -39,6 +40,18 @@ public class CategoriaService {
 
         return CategoriaResponseDTO
                 .builder()
+                .id(categoria.getId())
+                .nome(categoria.getNome())
+                .build();
+    }
+
+    public CategoriaResponseDTO atualizaCategoria(Long id, CategoriaUpdateDTO categoriaUpdate){
+        Categoria categoria = categoriaRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Categoria de id " + id + " não encontrada"));
+
+        categoriaRepository.save(categoria);
+
+        return CategoriaResponseDTO.builder()
                 .id(categoria.getId())
                 .nome(categoria.getNome())
                 .build();
